@@ -1,7 +1,9 @@
 title: "A Portfolio Theme for Jekyll"
 description: "This project is a Jekyll theme, which means that it can be used to set up a free website on Github Pages."
 author: Rizwan Ranjha
+# must match repo name /BlogPages
 baseurl: "" # leave empty for user.github.io
+url: "https://rizwanranjha.github.io/BlogPages/"
 theme: jekyll-theme-rrfolio
 
 plugins:
@@ -12,4 +14,4 @@ plugins:
 # Social links
 social:
   github: rizwanranjha
-  linkedin: rizwanranjha
+  linkedin: in/rizwanranjha
