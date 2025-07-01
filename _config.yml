@@ -1,17 +1,31 @@
 title: "A Portfolio Theme for Jekyll"
-description: "This project is a Jekyll theme, which means that it can be used to set up a free website on Github Pages."
+description: "This project is a Jekyll theme, which means that it can be used to set up a free website on GitHub Pages."
 author: Rizwan Ranjha
-# must match repo name /BlogPages
-baseurl: "" # leave empty for user.github.io
-url: "https://rizwanranjha.github.io/BlogPages/"
-theme: jekyll-theme-rrfolio
 
+# GitHub Pages project site config
+baseurl: "/BlogPages" # must match repo name
+url: "https://rizwanranjha.github.io"
+
+# Use your custom theme from GitHub
+remote_theme: rizwanranjha/jekyll-theme-rrfolio
+
+# Output directory support for _pages
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+
+# Jekyll plugins
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-remote-theme
 
-# Social links
+# Sass config (optional)
+sass:
+  style: compressed
+
+# Social links for theme support
 social:
   github: rizwanranjha
   linkedin: in/rizwanranjha
