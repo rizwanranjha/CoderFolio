@@ -1,4 +1,4 @@
-# Gemfile for jekyll-theme-rrfolio
+# Gemfile for codexfolio
 
 source "https://rubygems.org"
 
