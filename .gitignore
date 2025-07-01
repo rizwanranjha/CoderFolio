@@ -1,0 +1,18 @@
+# System files
+.DS_Store
+
+# Ruby/Bundler
+.bundle/
+Gemfile.lock
+
+# Local config
+.env
+
+# IDEs
+.vscode/
+.idea/
+
+# Logs or generated
+_site/
+.sass-cache/
+.jekyll-cache/

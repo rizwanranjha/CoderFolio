@@ -1,31 +1,41 @@
-title: "A Portfolio Theme for Jekyll"
-description: "This project is a Jekyll theme, which means that it can be used to set up a free website on GitHub Pages."
-author: Rizwan Ranjha
+title: "Codexfolio - A Jekyll Portfolio Theme"
+description: "Modern, minimalist Jekyll theme for blogs, resumes, and portfolios."
+author: "Rizwan Ranjha"
 
-# GitHub Pages project site config
-baseurl: "/BlogPages" # must match repo name
+# GitHub Pages configuration
+# Leave empty for user.github.io (root)
+baseurl: ""
 url: "https://rizwanranjha.github.io"
 
-# Use your custom theme from GitHub
-remote_theme: rizwanranjha/jekyll-theme-rrfolio
-
-# Output directory support for _pages
+# Enable custom pages from _pages/ folder
 collections:
   pages:
     output: true
     permalink: /:name/
 
-# Jekyll plugins
+# Enable plugins for feeds and SEO
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-remote-theme
 
-# Sass config (optional)
+# Enable SCSS compression
 sass:
   style: compressed
 
-# Social links for theme support
+# Social media handles (used in layout or SEO tags)
 social:
   github: rizwanranjha
   linkedin: in/rizwanranjha
+
+# Add Defaults for Front Matter
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
