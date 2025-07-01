@@ -1,5 +1,5 @@
 ---
 layout: default
-title: "Welcome to Rizwan Ranjha Jekyll Portfolio Theme"
+title: "Welcome to Codexfolio - A Portfolio Theme for Jekyll"
 permalink: /
 ---

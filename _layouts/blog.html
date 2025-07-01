@@ -1,0 +1,15 @@
+<!-- _layouts/blog.html -->
+---
+layout: default
+---
+
+<h1 class="mb-4">Latest Blog Posts</h1>
+<div class="list-group">
+  {% for post in site.posts %}
+    <a href="{{ post.url | relative_url }}" class="list-group-item list-group-item-action">
+      <h5 class="mb-1">{{ post.title }}</h5>
+      <small class="text-muted">{{ post.date | date: "%B %d, %Y" }}</small>
+      <p class="mb-1">{{ post.excerpt }}</p>
+    </a>
+  {% endfor %}
+</div>
