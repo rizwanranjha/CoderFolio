@@ -1,5 +1,5 @@
 ---
 layout: default
-title: "Welcome to Codexfolio - A Portfolio Theme for Jekyll"
+title: "Welcome to CoderFolio - A Portfolio Theme for Jekyll"
 permalink: /
 ---

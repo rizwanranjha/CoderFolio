@@ -1,4 +1,4 @@
-# Gemfile for codexfolio
+# Gemfile for CoderFolio
 
 source "https://rubygems.org"
 
