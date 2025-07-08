@@ -1,11 +1,14 @@
-title: "CoderFolio - A Jekyll Portfolio Theme"
+title: "CoderFolio"
 description: "Modern, minimalist Jekyll theme for blogs, resumes, and portfolios."
 author: "Rizwan Ranjha"
 
 # GitHub Pages configuration
-# Leave empty for user.github.io (root)
 baseurl: ""
 url: "https://rizwanranjha.github.io"
+
+# Force all posts under /blog/
+##permalink: /blog/:year/:month/:day/:title.html
+permalink: /blog/:title/
 
 # Enable custom pages from _pages/ folder
 collections:

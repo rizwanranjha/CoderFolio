@@ -1,15 +1,16 @@
 <!-- _layouts/blog.html -->
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  {% include header.html %}
 
-<h1 class="mb-4">Latest Blog Posts</h1>
-<div class="list-group">
-  {% for post in site.posts %}
-    <a href="{{ post.url | relative_url }}" class="list-group-item list-group-item-action">
-      <h5 class="mb-1">{{ post.title }}</h5>
-      <small class="text-muted">{{ post.date | date: "%B %d, %Y" }}</small>
-      <p class="mb-1">{{ post.excerpt }}</p>
-    </a>
-  {% endfor %}
-</div>
+  <main class="site-content container py-5">
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+</body>
+</html>

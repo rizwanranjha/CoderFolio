@@ -1,0 +1,37 @@
+---
+layout: default
+title: "Welcome to CoderFolio"
+---
+
+<section class="hero text-center py-5">
+  <h1>Hello, I'm CoderFolio</h1>
+  <p class="lead">I'm a [developer/designer] building clean, modern web experiences.</p>
+  <a href="{{ '/resume/' | relative_url }}" class="btn btn-primary mt-3">View Resume</a>
+</section>
+
+<section class="highlights container py-5">
+  <div class="row text-center">
+    <div class="col-md-4">
+      <h3>📝 Latest Blog</h3>
+      {% assign latest_post = site.posts | first %}
+      <p><a href="{{ latest_post.url | relative_url }}">{{ latest_post.title }}</a></p>
+      <p><a href="{{ '/blog/' | relative_url }}" class="btn btn-outline-secondary btn-sm">Explore Blog</a></p>
+    </div>
+    <div class="col-md-4">
+      <h3>💼 Portfolio</h3>
+      <p>Check out my recent projects and case studies.</p>
+      <p><a href="{{ '/projects/' | relative_url }}" class="btn btn-outline-secondary btn-sm">View Projects</a></p>
+    </div>
+    <div class="col-md-4">
+      <h3>📄 Resume</h3>
+      <p>Get a quick overview of my background and skills.</p>
+      <p><a href="{{ '/resume/' | relative_url }}" class="btn btn-outline-secondary btn-sm">Download Resume</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="contact-cta bg-light text-center py-5">
+  <h2>Let's Connect</h2>
+  <p>Have a question or want to work together?</p>
+  <a href="{{ '/contact/' | relative_url }}" class="btn btn-success mt-2">Contact Me</a>
+</section>
