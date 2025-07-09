@@ -3,8 +3,8 @@ description: "Modern, minimalist Jekyll theme for blogs, resumes, and portfolios
 author: "Rizwan Ranjha"
 
 # GitHub Pages configuration
-baseurl: ""
-url: "/CoderFolio"
+url: "https://rizwanranjha.github.io"
+baseurl: "/CoderFolio"
 
 # Force all posts under /blog/
 ##permalink: /blog/:year/:month/:day/:title.html
