@@ -1,38 +1,17 @@
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <a href="{{ '/' | relative_url }}" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">CoderFolio</h1>
-      </a>
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="{{ '/' | relative_url }}" class="active">Home</a></li>
-          <li><a href="{{ '/services/' | relative_url }}">Services</a></li>
-          <li><a href="{{ '/pricing/' | relative_url }}">Pricing</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container px-5">
+        <a class="navbar-brand" href="{{ '/' | relative_url }}"><span class="fw-bolder text-primary">CoderFolio</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                <li class="nav-item"><a class="nav-link" href="{{ '/' | relative_url }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ '/resume/' | relative_url }}">Resume</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ '/projects/' | relative_url }}">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ '/blog/' | relative_url }}">Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ '/faqs/' | relative_url }}">FAQs</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ '/contact/' | relative_url }}">Contact</a></li>
             </ul>
-          </li>
-          <li><a href="{{ '/about/' | relative_url }}">About</a></li>
-          <li><a href="{{ '/blog/' | relative_url }}">Blog</a></li>
-          <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
-      <a class="btn-getstarted" href="index.html#about">Get Started</a>
+        </div>
     </div>
-  </header>
+</nav>

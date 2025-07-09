@@ -4,13 +4,11 @@
 <head>
   {% include head.html %}
 </head>
-<body>
-  {% include header.html %}
-
-  <main class="site-content container py-5">
+<body class="d-flex flex-column h-100">
+  <main class="flex-shrink-0">
+    {% include header.html %}
     {{ content }}
   </main>
-
   {% include footer.html %}
 </body>
 </html>

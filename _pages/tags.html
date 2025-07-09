@@ -1,78 +1,83 @@
 ---
-layout: blog
+layout: default
 title: "Blog Tags"
 permalink: /blog/tags/
 ---
+<!-- Projects Section-->
+<section class="py-5">
+    <div class="container px-5 mb-5">
+        <div class="text-center mb-5">
+            <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Blog Tags</span></h1>
+        </div>
+        <div class="row gx-5 justify-content-center">
+          <!-- Main content -->
+          <div class="col-md-8">
+            <ul class="tag-list">
+            {% assign sorted_tags = site.tags | sort %}
+            {% for tag in sorted_tags %}
+                <li>
+                <a href="#{{ tag[0] }}">{{ tag[0] }} ({{ tag[1].size }})</a>
+                </li>
+            {% endfor %}
+            </ul>
 
-<div class="row">
-  <!-- Main content -->
-  <div class="col-md-8">
-    <h1 class="mb-4">All Tags</h1>
+            <hr>
 
-    <ul class="tag-list">
-    {% assign sorted_tags = site.tags | sort %}
-    {% for tag in sorted_tags %}
-        <li>
-        <a href="#{{ tag[0] }}">{{ tag[0] }} ({{ tag[1].size }})</a>
-        </li>
-    {% endfor %}
-    </ul>
+            {% for tag in sorted_tags %}
+            <h2 id="{{ tag[0] }}">{{ tag[0] }}</h2>
+            <ul>
+                {% for post in tag[1] %}
+                <li>
+                    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                    <small>({{ post.date | date: "%B %d, %Y" }})</small>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+          </div>
 
-    <hr>
+          <!-- Sidebar -->
+          <div class="col-md-4">
+            <aside class="sidebar">
 
-    {% for tag in sorted_tags %}
-    <h2 id="{{ tag[0] }}">{{ tag[0] }}</h2>
-    <ul>
-        {% for post in tag[1] %}
-        <li>
-            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-            <small>({{ post.date | date: "%B %d, %Y" }})</small>
-        </li>
-        {% endfor %}
-    </ul>
-    {% endfor %}
-  </div>
+              <section class="sidebar-section">
+                <h3>🕘 Recent Posts</h3>
+                <ul class="list-unstyled">
+                  {% for recent in site.posts limit:5 %}
+                    <li><a href="{{ recent.url | relative_url }}">{{ recent.title }}</a></li>
+                  {% endfor %}
+                </ul>
+              </section>
 
-  <!-- Sidebar -->
-  <div class="col-md-4">
-    <aside class="sidebar">
+              <section class="sidebar-section">
+                <h3>🏷️ Tags</h3>
+                <ul class="list-inline">
+                  {% assign all_tags = site.tags | sort %}
+                  {% for tag in all_tags %}
+                    <li class="list-inline-item">
+                      <a href="{{ '/blog/tags/#' | append: tag[0] | relative_url }}">{{ tag[0] }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+                <p><a href="/blog/tags/" class="btn btn-sm">View all tags</a></p>
+              </section>
 
-      <section class="sidebar-section">
-        <h3>🕘 Recent Posts</h3>
-        <ul class="list-unstyled">
-          {% for recent in site.posts limit:5 %}
-            <li><a href="{{ recent.url | relative_url }}">{{ recent.title }}</a></li>
-          {% endfor %}
-        </ul>
-      </section>
+              <section class="sidebar-section">
+                <h3></h3>
+                <h3>📂 Categories</h3>
+                <ul class="list-unstyled">
+                  {% assign categories = site.categories | sort %}
+                  {% for category in categories %}
+                    <li>
+                      <a href="{{ '/blog/categories/#' | append: category[0] | relative_url }}">{{ category[0] }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+                <p><a href="/blog/categories/" class="btn btn-sm">View all categories</a></p>
+              </section>
 
-      <section class="sidebar-section">
-        <h3><a href="/blog/tags/">🏷️ Tags</a></h3>
-        <ul class="list-inline">
-          {% assign all_tags = site.tags | sort %}
-          {% for tag in all_tags %}
-            <li class="list-inline-item">
-              <a href="{{ '/blog/tags/#' | append: tag[0] | relative_url }}">{{ tag[0] }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-        <p><a href="/blog/tags/" class="btn btn-sm">View all tags</a></p>
-      </section>
-
-      <section class="sidebar-section">
-        <h3></h3>
-        <h3><a href="/blog/categories/">📂 Categories</a></h3>
-        <ul class="list-unstyled">
-          {% assign categories = site.categories | sort %}
-          {% for category in categories %}
-            <li>
-              <a href="{{ '/blog/categories/#' | append: category[0] | relative_url }}">{{ category[0] }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-        <p><a href="/blog/categories/" class="btn btn-sm">View all categories</a></p>
-      </section>
-
-    </aside>
-  </div>
-</div>
+            </aside>
+          </div>
+        </div>
+    </div>
+</section>
