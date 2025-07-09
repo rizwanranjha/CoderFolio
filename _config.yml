@@ -4,7 +4,7 @@ author: "Rizwan Ranjha"
 
 # GitHub Pages configuration
 baseurl: ""
-url: "https://rizwanranjha.github.io/CoderFolio/"
+url: "/CoderFolio"
 
 # Force all posts under /blog/
 ##permalink: /blog/:year/:month/:day/:title.html
