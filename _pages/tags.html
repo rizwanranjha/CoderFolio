@@ -28,7 +28,7 @@ permalink: /blog/tags/
             <ul>
                 {% for post in tag[1] %}
                 <li>
-                    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                    <a href="{{ post.url | relative_url | absolute_url }}">{{ post.title }}</a>
                     <small>({{ post.date | date: "%B %d, %Y" }})</small>
                 </li>
                 {% endfor %}
@@ -44,7 +44,7 @@ permalink: /blog/tags/
                 <h3>🕘 Recent Posts</h3>
                 <ul class="list-unstyled">
                   {% for recent in site.posts limit:5 %}
-                    <li><a href="{{ recent.url | relative_url }}">{{ recent.title }}</a></li>
+                    <li><a href="{{ recent.url | relative_url | absolute_url }}">{{ recent.title }}</a></li>
                   {% endfor %}
                 </ul>
               </section>
@@ -55,7 +55,7 @@ permalink: /blog/tags/
                   {% assign all_tags = site.tags | sort %}
                   {% for tag in all_tags %}
                     <li class="list-inline-item">
-                      <a href="{{ '/blog/tags/#' | append: tag[0] | relative_url }}">{{ tag[0] }}</a>
+                      <a href="{{ '/blog/tags/#' | append: tag[0] | relative_url | absolute_url }}">{{ tag[0] }}</a>
                     </li>
                   {% endfor %}
                 </ul>
@@ -69,7 +69,7 @@ permalink: /blog/tags/
                   {% assign categories = site.categories | sort %}
                   {% for category in categories %}
                     <li>
-                      <a href="{{ '/blog/categories/#' | append: category[0] | relative_url }}">{{ category[0] }}</a>
+                      <a href="{{ '/blog/categories/#' | append: category[0] | relative_url | absolute_url }}">{{ category[0] }}</a>
                     </li>
                   {% endfor %}
                 </ul>
