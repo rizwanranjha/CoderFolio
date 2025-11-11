@@ -4,70 +4,466 @@ title: "Blog Home Page"
 permalink: /blog/
 ---
 <!-- Page Content-->
-<div class="container px-5 my-5">
-    <div class="text-center mb-5">
-        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Blog</span></h1>
-    </div>
+<div class="container px-5 py-5">
     <div class="row gx-5 justify-content-center">
-      <!-- Main content -->
-      <div class="col-md-8">
-        <h1 class="mb-4">Latest Posts</h1>
-
-        {% for post in site.posts %}
-          <article class="card shadow border-0 rounded-4 mb-5">
-            <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-            <p class="text-muted"><small>{{ post.date | date: "%B %d, %Y" }}</small></p>
-            {% if post.excerpt %}
-            <div class="card-body p-3">
-               <p>{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
-               <p><a href="{{ post.url | relative_url }}" class="read-more">Read More →</a></p>
+        <div class="col-12">
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Blog</span></h1>
+                <p class="lead text-muted mt-3">Discover insights, tutorials, and stories from my journey</p>
             </div>
-            {% endif %}
-          </article>
-        {% endfor %}
-      </div>
+            
+            <div class="row gx-5 justify-content-center">
+                <!-- Main content -->
+                <div class="col-lg-8" id="blogPostsContainer">
+                    {% for post in site.posts %}
+                    <article class="card shadow border-0 rounded-4 mb-5 blog-post-card" style="transition: all 0.3s ease;">
+                        {% if post.image %}
+                        <img src="{{ post.image | relative_url }}" class="card-img-top rounded-top-4" alt="{{ post.title }}" style="height: 250px; object-fit: cover;">
+                        {% endif %}
+                        <div class="card-body p-5">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex align-items-center me-4">
+                                    <i class="bi bi-calendar3 text-primary me-2"></i>
+                                    <small class="text-muted">{{ post.date | date: "%B %d, %Y" }}</small>
+                                </div>
+                                {% if post.author %}
+                                <div class="d-flex align-items-center me-4">
+                                    <i class="bi bi-person text-primary me-2"></i>
+                                    <small class="text-muted">{{ post.author }}</small>
+                                </div>
+                                {% endif %}
+                                {% if post.read_time %}
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-clock text-primary me-2"></i>
+                                    <small class="text-muted">{{ post.read_time }} min read</small>
+                                </div>
+                                {% endif %}
+                            </div>
+                            <h2 class="card-title mb-3">
+                                <a href="{{ post.url | relative_url }}" class="text-decoration-none text-dark fw-bolder" style="transition: color 0.3s ease;">
+                                    {{ post.title }}
+                                </a>
+                            </h2>
+                            {% if post.description %}
+                            <p class="card-text text-muted mb-4 lead">{{ post.description }}</p>
+                            {% elsif post.excerpt %}
+                            <p class="card-text text-muted mb-4">{{ post.excerpt | strip_html | truncatewords: 35 }}</p>
+                            {% endif %}
+                            {% if post.tags.size > 0 %}
+                            <div class="mb-4">
+                                {% for tag in post.tags %}
+                                <a href="{{ '/blog/tags/#' | append: tag | relative_url }}" class="badge bg-primary bg-gradient text-white text-decoration-none me-2 mb-2" style="padding: 0.5rem 1rem; font-size: 0.75rem;">{{ tag }}</a>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            <a href="{{ post.url | relative_url }}" class="btn btn-primary btn-lg px-4 py-2">
+                                Read More <i class="bi bi-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </article>
+                    {% endfor %}
+                    
+                    {% if site.posts.size == 0 %}
+                    <div class="card shadow border-0 rounded-4 mb-5">
+                        <div class="card-body p-5 text-center">
+                            <div class="mb-4">
+                                <i class="bi bi-journal-text display-1 text-muted"></i>
+                            </div>
+                            <h3 class="fw-bolder mb-3">No blog posts yet</h3>
+                            <p class="text-muted mb-0">Check back soon for new content!</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    <!-- No Results Message -->
+                    <div id="noResults" class="card shadow border-0 rounded-4 mb-5" style="display: none;">
+                        <div class="card-body p-5 text-center">
+                            <div class="mb-4">
+                                <i class="bi bi-search display-1 text-muted"></i>
+                            </div>
+                            <h3 class="fw-bolder mb-3">No posts found</h3>
+                            <p class="text-muted mb-0">Try different keywords or <a href="#" id="clearSearchLink" class="text-primary">clear your search</a></p>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Sidebar -->
-      <div class="col-md-4">
-        <aside class="sidebar">
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <aside class="sidebar">
+                        <!-- Search -->
+                        <div class="card shadow border-0 rounded-4 mb-4">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                        <i class="bi bi-search"></i>
+                                    </div>
+                                    <h5 class="fw-bolder mb-0"><span class="text-gradient d-inline">Search</span></h5>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" id="blogSearch" class="form-control" placeholder="Search posts..." autocomplete="off">
+                                    <button class="btn btn-outline-secondary" type="button" id="clearSearch" style="display: none;">
+                                        <i class="bi bi-x-lg"></i>
+                                    </button>
+                                </div>
+                                <div id="searchResults" class="mt-2" style="display: none;">
+                                    <small class="text-muted">
+                                        <span id="resultCount">0</span> result(s) found
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Recent Posts -->
+                        <div class="card shadow border-0 rounded-4 mb-4">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                        <i class="bi bi-clock-history"></i>
+                                    </div>
+                                    <h5 class="fw-bolder mb-0"><span class="text-gradient d-inline">Recent Posts</span></h5>
+                                </div>
+                                {% if site.posts.size > 0 %}
+                                <ul class="list-unstyled mb-0">
+                                    {% for recent in site.posts limit:5 %}
+                                    <li class="mb-3 pb-3 border-bottom">
+                                        <a href="{{ recent.url | relative_url }}" class="text-decoration-none text-dark fw-medium d-block" style="transition: color 0.3s ease;">
+                                            {{ recent.title }}
+                                        </a>
+                                        <small class="text-muted">{{ recent.date | date: "%B %d, %Y" }}</small>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                {% else %}
+                                <p class="text-muted mb-0 small">No posts yet.</p>
+                                {% endif %}
+                            </div>
+                        </div>
 
-          <section class="sidebar-section">
-            <h3>🕘 Recent Posts</h3>
-            <ul class="list-unstyled">
-              {% for recent in site.posts limit:5 %}
-                <li><a href="{{ recent.url | relative_url }}">{{ recent.title }}</a></li>
-              {% endfor %}
-            </ul>
-          </section>
+                        <!-- Tags -->
+                        {% assign all_tags = site.tags | sort %}
+                        {% if all_tags.size > 0 %}
+                        <div class="card shadow border-0 rounded-4 mb-4">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                        <i class="bi bi-tags"></i>
+                                    </div>
+                                    <h5 class="fw-bolder mb-0"><span class="text-gradient d-inline">Tags</span></h5>
+                                </div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    {% for tag in all_tags %}
+                                    <a href="{{ '/blog/tags/#' | append: tag[0] | relative_url }}" class="badge bg-light text-dark text-decoration-none border" style="padding: 0.5rem 0.75rem; font-size: 0.75rem; transition: all 0.3s ease;">
+                                        {{ tag[0] }} <span class="text-muted">({{ tag[1].size }})</span>
+                                    </a>
+                                    {% endfor %}
+                                </div>
+                                <div class="mt-3">
+                                    <a href="{{ '/blog/tags/' | relative_url }}" class="btn btn-sm btn-outline-primary">View all tags</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
 
-          <section class="sidebar-section">
-            <h3>🏷️ Tags</h3>
-            <ul class="list-inline">
-              {% assign all_tags = site.tags | sort %}
-              {% for tag in all_tags %}
-                <li class="list-inline-item">
-                  <a href="{{ '/blog/tags/#' | append: tag[0] | relative_url }}">{{ tag[0] }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-            <p><a href="{{ '/blog/tags/' | relative_url }}" class="btn btn-sm">View all tags</a></p>
-          </section>
-
-          <section class="sidebar-section">
-            <h3></h3>
-            <h3>📂 Categories</h3>
-            <ul class="list-unstyled">
-              {% assign categories = site.categories | sort %}
-              {% for category in categories %}
-                <li>
-                  <a href="{{ '/blog/categories/#' | append: category[0] | relative_url }}">{{ category[0] }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-            <p><a href="{{ '/blog/categories/' | relative_url }}" class="btn btn-sm">View all categories</a></p>
-          </section>
-
-        </aside>
-      </div>
+                        <!-- Categories -->
+                        {% assign all_categories = site.categories | sort %}
+                        {% if all_categories.size > 0 %}
+                        <div class="card shadow border-0 rounded-4 mb-4">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                        <i class="bi bi-folder"></i>
+                                    </div>
+                                    <h5 class="fw-bolder mb-0"><span class="text-gradient d-inline">Categories</span></h5>
+                                </div>
+                                <ul class="list-unstyled mb-0">
+                                    {% for category in all_categories %}
+                                    <li class="mb-2">
+                                        <a href="{{ '/blog/categories/#' | append: category[0] | relative_url }}" class="text-decoration-none text-dark d-flex justify-content-between align-items-center" style="transition: color 0.3s ease;">
+                                            <span>{{ category[0] }}</span>
+                                            <span class="badge bg-primary bg-gradient text-white">{{ category[1].size }}</span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                <div class="mt-3">
+                                    <a href="{{ '/blog/categories/' | relative_url }}" class="btn btn-sm btn-outline-primary">View all categories</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </aside>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<style>
+.blog-post-card {
+    transition: all 0.3s ease;
+}
+
+.blog-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.blog-post-card:hover .card-title a {
+    color: var(--bs-primary) !important;
+}
+
+.sidebar .card {
+    transition: all 0.3s ease;
+}
+
+.sidebar .card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.sidebar a:hover {
+    color: var(--bs-primary) !important;
+}
+
+.sidebar .badge:hover {
+    background-color: var(--bs-primary) !important;
+    color: white !important;
+    border-color: var(--bs-primary) !important;
+}
+
+#blogSearch:focus {
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.search-highlight {
+    background-color: #fff3cd;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* Button Hover Effects */
+.btn-primary {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:hover .bi-arrow-right {
+    transform: translateX(5px);
+    transition: transform 0.3s ease;
+}
+
+.btn-outline-primary {
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: white;
+}
+
+.btn-outline-secondary {
+    transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    background-color: var(--bs-secondary);
+    border-color: var(--bs-secondary);
+    color: white;
+}
+
+.btn-primary .bi-arrow-right {
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+/* Sidebar button improvements */
+.sidebar .btn {
+    transition: all 0.3s ease;
+}
+
+.sidebar .btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Link hover improvements */
+a.text-primary:hover {
+    text-decoration: underline;
+    transition: all 0.3s ease;
+}
+</style>
+
+<script>
+(function() {
+    let allPosts = [];
+    
+    // Load search index
+    async function loadSearchIndex() {
+        try {
+            const response = await fetch('{{ "/search.json" | relative_url }}');
+            allPosts = await response.json();
+        } catch (error) {
+            console.error('Error loading search index:', error);
+        }
+    }
+    
+    // Initialize search
+    function initSearch() {
+        const searchInput = document.getElementById('blogSearch');
+        const clearBtn = document.getElementById('clearSearch');
+        const clearLink = document.getElementById('clearSearchLink');
+        const resultsDiv = document.getElementById('searchResults');
+        const resultCount = document.getElementById('resultCount');
+        const noResults = document.getElementById('noResults');
+        const postsContainer = document.getElementById('blogPostsContainer');
+        const originalPosts = postsContainer.innerHTML;
+        
+        if (!searchInput) return;
+        
+        // Search function
+        function performSearch(query) {
+            if (!query || query.trim() === '') {
+                // Show all posts
+                postsContainer.innerHTML = originalPosts;
+                resultsDiv.style.display = 'none';
+                noResults.style.display = 'none';
+                clearBtn.style.display = 'none';
+                return;
+            }
+            
+            const searchTerm = query.toLowerCase().trim();
+            const searchWords = searchTerm.split(/\s+/).filter(word => word.length > 0);
+            
+            // Search through posts
+            const matchingPosts = allPosts.filter(post => {
+                const title = (post.title || '').toLowerCase();
+                const description = (post.description || '').toLowerCase();
+                const content = (post.content || '').toLowerCase();
+                const tags = (post.tags || []).map(tag => tag.toLowerCase()).join(' ');
+                const categories = (post.categories || []).map(cat => cat.toLowerCase()).join(' ');
+                
+                const searchableText = `${title} ${description} ${content} ${tags} ${categories}`;
+                
+                // Check if all search words are found
+                return searchWords.every(word => searchableText.includes(word));
+            });
+            
+            // Update UI
+            if (matchingPosts.length === 0) {
+                postsContainer.innerHTML = '';
+                noResults.style.display = 'block';
+                resultsDiv.style.display = 'block';
+                resultCount.textContent = '0';
+            } else {
+                noResults.style.display = 'none';
+                resultsDiv.style.display = 'block';
+                resultCount.textContent = matchingPosts.length;
+                
+                // Render matching posts
+                renderPosts(matchingPosts, searchWords);
+            }
+            
+            clearBtn.style.display = 'block';
+        }
+        
+        // Render posts
+        function renderPosts(posts, searchWords) {
+            const postsHTML = posts.map(post => {
+                // Highlight search terms in title
+                let highlightedTitle = post.title;
+                searchWords.forEach(word => {
+                    const regex = new RegExp(`(${word})`, 'gi');
+                    highlightedTitle = highlightedTitle.replace(regex, '<span class="search-highlight">$1</span>');
+                });
+                
+                // Highlight search terms in description
+                let highlightedDesc = post.description || '';
+                searchWords.forEach(word => {
+                    const regex = new RegExp(`(${word})`, 'gi');
+                    highlightedDesc = highlightedDesc.replace(regex, '<span class="search-highlight">$1</span>');
+                });
+                
+                const tagsHTML = (post.tags || []).map(tag => 
+                    `<a href="{{ '/blog/tags/#' | relative_url }}${tag}" class="badge bg-primary bg-gradient text-white text-decoration-none me-2 mb-2" style="padding: 0.5rem 1rem; font-size: 0.75rem;">${tag}</a>`
+                ).join('');
+                
+                return `
+                    <article class="card shadow border-0 rounded-4 mb-5 blog-post-card" style="transition: all 0.3s ease;">
+                        <div class="card-body p-5">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex align-items-center me-4">
+                                    <i class="bi bi-calendar3 text-primary me-2"></i>
+                                    <small class="text-muted">${post.date}</small>
+                                </div>
+                                ${post.author ? `
+                                <div class="d-flex align-items-center me-4">
+                                    <i class="bi bi-person text-primary me-2"></i>
+                                    <small class="text-muted">${post.author}</small>
+                                </div>
+                                ` : ''}
+                            </div>
+                            <h2 class="card-title mb-3">
+                                <a href="${post.url}" class="text-decoration-none text-dark fw-bolder" style="transition: color 0.3s ease;">
+                                    ${highlightedTitle}
+                                </a>
+                            </h2>
+                            <p class="card-text text-muted mb-4">${highlightedDesc}</p>
+                            ${tagsHTML ? `<div class="mb-4">${tagsHTML}</div>` : ''}
+                            <a href="${post.url}" class="btn btn-primary btn-lg px-4 py-2">
+                                Read More <i class="bi bi-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+            
+            postsContainer.innerHTML = postsHTML;
+        }
+        
+        // Event listeners
+        let searchTimeout;
+        searchInput.addEventListener('input', function(e) {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                performSearch(e.target.value);
+            }, 300); // Debounce search
+        });
+        
+        clearBtn.addEventListener('click', function() {
+            searchInput.value = '';
+            performSearch('');
+        });
+        
+        if (clearLink) {
+            clearLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                searchInput.value = '';
+                performSearch('');
+                searchInput.focus();
+            });
+        }
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', async function() {
+            await loadSearchIndex();
+            initSearch();
+        });
+    } else {
+        loadSearchIndex().then(() => {
+            initSearch();
+        });
+    }
+})();
+</script>

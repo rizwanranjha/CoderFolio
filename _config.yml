@@ -1,14 +1,16 @@
 title: "CoderFolio"
 description: "Modern, minimalist Jekyll theme for blogs, resumes, and portfolios."
 author: "Rizwan Ranjha"
+email: "your-email@example.com"  # Replace with your email for contact form
 
 # GitHub Pages configuration
+# If using username.github.io, set baseurl to ""
+# If using username.github.io/repo-name, set baseurl to "/repo-name"
 url: "https://rizwanranjha.github.io"
 baseurl: "/CoderFolio"
 
-# Force all posts under /blog/
-##permalink: /blog/:year/:month/:day/:title.html
-permalink: /blog/:title/
+# Blog post permalink structure
+permalink: /blog/:year/:month/:day/:title/
 
 # Enable custom pages from _pages/ folder
 collections:
@@ -25,10 +27,38 @@ plugins:
 sass:
   style: compressed
 
-# Social media handles (used in layout or SEO tags)
+# Social media handles and professional networks
+# Note: Set to "" (empty string) to hide a platform, or remove the line entirely
 social:
-  github: rizwanranjha
-  linkedin: in/rizwanranjha
+  # Social Networks
+  linkedin: in/rizwanranjha  # Full path: in/username or username
+  facebook: "yourname"  # Your Facebook profile URL or username (e.g., "yourname" or full URL) - REPLACE WITH YOUR ACTUAL PROFILE
+  twitter: "yourname"  # Your Twitter/X profile URL or username (e.g., "yourname" or full URL) - REPLACE WITH YOUR ACTUAL PROFILE
+  instagram: ""  # Your Instagram profile URL or username
+  pinterest: "yourname"  # Your Pinterest profile URL or username - REPLACE WITH YOUR ACTUAL PROFILE
+  youtube: ""  # Your YouTube channel URL or username (e.g., "@channelname")
+  reddit: ""  # Your Reddit profile URL or username
+  discord: ""  # Your Discord server invite URL (e.g., "https://discord.gg/invitecode")
+  # Professional Platforms
+  github: rizwanranjha  # GitHub username
+  stackoverflow: "users/12345/yourname"  # Your Stack Overflow profile URL (e.g., "users/12345/username" or full URL) - REPLACE WITH YOUR ACTUAL PROFILE
+  # Freelancer Portals
+  upwork: "https://www.upwork.com/freelancers/yourname"  # Your Upwork profile URL (full URL required) - REPLACE WITH YOUR ACTUAL PROFILE
+  fiverr: "https://www.fiverr.com/yourname"  # Your Fiverr profile URL (full URL required) - REPLACE WITH YOUR ACTUAL PROFILE
+  freelancer: ""  # Your Freelancer.com profile URL (full URL required)
+  # Creative Platforms
+  behance: ""  # Your Behance profile URL (full URL required)
+  dribbble: ""  # Your Dribbble profile URL (full URL required)
+  # Content Platforms
+  medium: ""  # Your Medium profile URL or username
+  devto: ""  # Your Dev.to profile URL or username
+  # App Stores
+  appstore: ""  # Your Apple App Store developer page URL (full URL required)
+  playstore: ""  # Your Google Play Store developer page URL (full URL required)
+  # Other Platforms
+  telegram: ""  # Your Telegram username or channel URL
+  whatsapp: ""  # Your WhatsApp contact (format: countrycode+number, e.g., "1234567890")
+  microsoftteams: ""  # Your Microsoft Teams profile or meeting link (full URL required)
 
 # Add Defaults for Front Matter
 defaults:
@@ -37,6 +67,7 @@ defaults:
       type: "posts"
     values:
       layout: post
+      author: "Rizwan Ranjha"  # Default author
   - scope:
       path: ""
       type: "pages"

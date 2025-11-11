@@ -1,71 +1,334 @@
 ---
 layout: default
-title: "CoderFolio Jekyll Theme FAQs"
+title: "FAQs"
 permalink: /faqs/
 ---
 <!-- Page Content-->
-<div class="container px-5 my-5">
-    <div class="text-center mb-5">
-        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">{{ page.title }}</span></h1>
-    </div>
+<div class="container px-5 py-5">
     <div class="row gx-5 justify-content-center">
-      <!-- Main content -->
-      <div class="col-12">
+        <div class="col-12">
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Frequently Asked Questions</span></h1>
+                <p class="lead text-muted mt-3">Find answers to common questions about CoderFolio</p>
+            </div>
 
-        <div class="accordion" id="accordionPanelsStayOpen">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                What is CoderFolio Jekyll Theme
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-              <div class="accordion-body">
-                <a href="https://rizwanranjha.github.io/CoderFolio/" target="_blank" rel="noopener noreferrer"><strong>CoderFolio</strong></a> is a Jekyll theme designed for developers, especially those looking to showcase their portfolio, resume, and blog on GitHub Pages with or without personal domains.
-              </div>
+            <div class="accordion" id="faqAccordion">
+                <!-- What is CoderFolio -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                            What is CoderFolio?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <strong>CoderFolio</strong> is a modern, minimalist Jekyll theme designed for developers, designers, and content creators. It provides a clean portfolio layout, SEO-friendly blog posts, and is optimized for GitHub Pages. Perfect for showcasing your work, writing blog posts, and displaying your professional profile.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Getting Started -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                            How do I get started with CoderFolio?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <ol>
+                                <li><strong>Fork or clone</strong> the CoderFolio repository</li>
+                                <li><strong>Update</strong> <code>_config.yml</code> with your information (title, description, author, social links)</li>
+                                <li><strong>Configure</strong> your GitHub Pages settings in your repository</li>
+                                <li><strong>Push</strong> to GitHub and your site will be live!</li>
+                            </ol>
+                            <p class="mb-0">For detailed local development setup, see <a href="https://github.com/rizwanranjha/CoderFolio/blob/main/LOCAL_SETUP.md" target="_blank">LOCAL_SETUP.md</a>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Configuration -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                            How do I configure the theme for my site?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Edit the <code>_config.yml</code> file to customize:
+                            <ul>
+                                <li><strong>Site Information:</strong> title, description, author, email</li>
+                                <li><strong>GitHub Pages:</strong> url and baseurl (set baseurl to "" if using username.github.io, or "/repo-name" if using a project repository)</li>
+                                <li><strong>Social Media:</strong> Add your LinkedIn, GitHub, Twitter, and other social platform links</li>
+                                <li><strong>Blog Settings:</strong> Permalink structure and default author</li>
+                            </ul>
+                            <p class="mb-0"><strong>Important:</strong> After changing <code>_config.yml</code>, restart your Jekyll server if running locally.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Posts -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                            How do I create a new blog post?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <ol>
+                                <li>Create a new file in <code>_posts/</code> with the format: <code>YYYY-MM-DD-title.md</code></li>
+                                <li>Add front matter at the top:
+                                    <pre><code>---
+layout: post
+title: "Your Post Title"
+date: 2025-01-15
+description: "Post description"
+tags: [tag1, tag2]
+categories: [category1]
+---</code></pre>
+                                </li>
+                                <li>Write your content in Markdown below the front matter</li>
+                            </ol>
+                            <p class="mb-0">Posts will automatically appear on your blog page and be available at <code>/blog/YYYY/MM/DD/title/</code></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GitHub Pages Setup -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                            How do I deploy to GitHub Pages?
+                        </button>
+                    </h2>
+                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <ol>
+                                <li>Push your repository to GitHub</li>
+                                <li>Go to <strong>Settings</strong> → <strong>Pages</strong> in your repository</li>
+                                <li>Select your branch (usually <code>main</code> or <code>gh-pages</code>)</li>
+                                <li>Select the root folder and click <strong>Save</strong></li>
+                                <li>Your site will be available at <code>https://username.github.io/repo-name</code></li>
+                            </ol>
+                            <p class="mb-0"><strong>Note:</strong> Make sure your <code>baseurl</code> in <code>_config.yml</code> matches your repository name (e.g., <code>baseurl: "/repo-name"</code>).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Pages -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                            How do I create custom pages?
+                        </button>
+                    </h2>
+                    <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <ol>
+                                <li>Create a new file in the <code>_pages/</code> directory (e.g., <code>_pages/about.html</code>)</li>
+                                <li>Add front matter:
+                                    <pre><code>---
+layout: default
+title: "About"
+permalink: /about/
+---</code></pre>
+                                </li>
+                                <li>Add your HTML content below the front matter</li>
+                            </ol>
+                            <p class="mb-0">The page will be automatically available at <code>/about/</code>. You can add it to your navigation in <code>_includes/header.html</code>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7" aria-expanded="false" aria-controls="faq7">
+                            How do I add or update social media links?
+                        </button>
+                    </h2>
+                    <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Edit the <code>social</code> section in <code>_config.yml</code>:
+                            <ul>
+                                <li><strong>LinkedIn:</strong> Add your profile path (e.g., <code>in/username</code>)</li>
+                                <li><strong>GitHub:</strong> Add your username</li>
+                                <li><strong>Other platforms:</strong> Add full URLs or usernames as specified in the comments</li>
+                                <li><strong>Hide platforms:</strong> Set the value to <code>""</code> (empty string) to hide a platform</li>
+                            </ul>
+                            <p class="mb-0">Social links appear on the Contact page. Supported platforms include LinkedIn, GitHub, Twitter, Facebook, Upwork, Fiverr, Stack Overflow, and many more.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8" aria-expanded="false" aria-controls="faq8">
+                            Does the contact form work on GitHub Pages?
+                        </button>
+                    </h2>
+                    <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>The theme uses a client-side contact form solution that works on GitHub Pages. However, the contact page has been redesigned to show social and professional network links instead of a form.</p>
+                            <p class="mb-0">If you need a contact form, you can integrate services like <strong>FormSubmit</strong> or <strong>Formspree</strong>. See <code>CONTACT_FORM_SETUP.md</code> for instructions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Search -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq9" aria-expanded="false" aria-controls="faq9">
+                            How does the blog search work?
+                        </button>
+                    </h2>
+                    <div id="faq9" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>The blog search is a <strong>client-side search</strong> that works entirely in the browser, making it compatible with GitHub Pages:</p>
+                            <ul>
+                                <li>Jekyll generates a <code>search.json</code> file with all post data during build</li>
+                                <li>The search box in the sidebar searches through post titles, content, tags, and categories</li>
+                                <li>Results are displayed instantly with highlighted search terms</li>
+                                <li>No server-side processing required - works perfectly on static hosting</li>
+                            </ul>
+                            <p class="mb-0">The search is located in the blog sidebar and searches as you type (with a 300ms debounce).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customization -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq10" aria-expanded="false" aria-controls="faq10">
+                            How can I customize the theme's appearance?
+                        </button>
+                    </h2>
+                    <div id="faq10" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>You can customize the theme in several ways:</p>
+                            <ul>
+                                <li><strong>Colors:</strong> Edit CSS variables in <code>assets/css/styles.css</code></li>
+                                <li><strong>Layouts:</strong> Modify files in <code>_layouts/</code> directory</li>
+                                <li><strong>Navigation:</strong> Edit <code>_includes/header.html</code></li>
+                                <li><strong>Footer:</strong> Edit <code>_includes/footer.html</code></li>
+                                <li><strong>Page Content:</strong> Edit files in <code>_pages/</code> directory</li>
+                            </ul>
+                            <p class="mb-0"><strong>Tip:</strong> To override theme files, copy them to your repository and modify them. Your local files will override the theme defaults.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Local Development -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq11" aria-expanded="false" aria-controls="faq11">
+                            How do I run the site locally?
+                        </button>
+                    </h2>
+                    <div id="faq11" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <ol>
+                                <li><strong>Install Ruby</strong> (see <code>LOCAL_SETUP.md</code> for platform-specific instructions)</li>
+                                <li><strong>Install Bundler:</strong> <code>gem install bundler</code></li>
+                                <li><strong>Install dependencies:</strong> <code>bundle install</code></li>
+                                <li><strong>Start the server:</strong> <code>bundle exec jekyll serve</code></li>
+                                <li>Visit <code>http://localhost:4000</code> (or <code>http://localhost:4000/CoderFolio</code> if using baseurl)</li>
+                            </ol>
+                            <p class="mb-0"><strong>Note:</strong> On Windows, you may need to install RubyInstaller with DevKit. The site will auto-reload when you make changes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Troubleshooting -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq12" aria-expanded="false" aria-controls="faq12">
+                            My site isn't working. What should I check?
+                        </button>
+                    </h2>
+                    <div id="faq12" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>Common issues and solutions:</p>
+                            <ul>
+                                <li><strong>404 errors:</strong> Check that your <code>baseurl</code> in <code>_config.yml</code> matches your repository name</li>
+                                <li><strong>Missing posts:</strong> Ensure post files follow the naming convention <code>YYYY-MM-DD-title.md</code></li>
+                                <li><strong>Layout errors:</strong> Verify front matter includes <code>layout: post</code> or <code>layout: default</code></li>
+                                <li><strong>GitHub Pages not updating:</strong> Wait a few minutes, clear cache, or check the Actions tab for build errors</li>
+                                <li><strong>Local server issues:</strong> Restart Jekyll after changing <code>_config.yml</code></li>
+                            </ul>
+                            <p class="mb-0">For more help, check the <a href="https://github.com/rizwanranjha/CoderFolio/issues" target="_blank">GitHub Issues</a> or create a new issue.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Permalink Structure -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq13" aria-expanded="false" aria-controls="faq13">
+                            Can I change the blog post URL structure?
+                        </button>
+                    </h2>
+                    <div id="faq13" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>Yes! Edit the <code>permalink</code> setting in <code>_config.yml</code>:</p>
+                            <ul>
+                                <li><strong>Current:</strong> <code>/blog/:year/:month/:day/:title/</code></li>
+                                <li><strong>Date only:</strong> <code>/blog/:year/:month/:day/:title.html</code></li>
+                                <li><strong>Title only:</strong> <code>/blog/:title/</code></li>
+                                <li><strong>Category:</strong> <code>/blog/:categories/:title/</code></li>
+                            </ul>
+                            <p class="mb-0"><strong>Note:</strong> Changing permalinks will break existing links. Consider setting up redirects if you have existing posts.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq14" aria-expanded="false" aria-controls="faq14">
+                            How do I customize the navigation menu?
+                        </button>
+                    </h2>
+                    <div id="faq14" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <ol>
+                                <li>Open <code>_includes/header.html</code></li>
+                                <li>Find the navigation section with the <code>&lt;ul class="navbar-nav"&gt;</code> tags</li>
+                                <li>Add, remove, or modify menu items:
+                                    <pre><code>&lt;li class="nav-item"&gt;
+    &lt;a class="nav-link" href="{{ '/about/' | relative_url }}"&gt;About&lt;/a&gt;
+&lt;/li&gt;</code></pre>
+                                </li>
+                                <li>Save and the changes will appear in your navigation</li>
+                            </ol>
+                            <p class="mb-0">The navigation uses Bootstrap classes and is fully responsive. Make sure to use <code>relative_url</code> filter for proper URL generation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Support -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq15" aria-expanded="false" aria-controls="faq15">
+                            Where can I get help or report issues?
+                        </button>
+                    </h2>
+                    <div id="faq15" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>You can get help through:</p>
+                            <ul>
+                                <li><strong>GitHub Issues:</strong> <a href="https://github.com/rizwanranjha/CoderFolio/issues" target="_blank">Report bugs or ask questions</a></li>
+                                <li><strong>Documentation:</strong> Check the <code>README.md</code> and other documentation files</li>
+                                <li><strong>Jekyll Docs:</strong> <a href="https://jekyllrb.com/docs/" target="_blank">Jekyll documentation</a> for general Jekyll questions</li>
+                            </ul>
+                            <p class="mb-0">When reporting issues, please include your Jekyll version, Ruby version, and any error messages you're seeing.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                How to use CoderFolio Jekyll Theme with my own pages?
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
-              <div class="accordion-body">
-                To use the CoderFolio Jekyll Theme with your own pages, In your project's _config.yml file, add the following line: <br>remote_theme: rizwanranjha/codexfolio
-                
-                :
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                Accordion Item #3
-              </button>
-            </h2>
-            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
-              <div class="accordion-body">
-                <strong>This is the third item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
-            </div>
-          </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      </div>
     </div>
 </div>

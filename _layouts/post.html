@@ -1,0 +1,64 @@
+---
+layout: default
+---
+<!-- Post Content-->
+<div class="container px-5 py-5">
+    <div class="row gx-5 justify-content-center">
+        <div class="col-12">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8">
+            <!-- Post Header-->
+            <header class="mb-4">
+                <h1 class="display-5 fw-bolder mb-1">{{ page.title }}</h1>
+                <div class="text-muted fst-italic mb-2">
+                    Posted on {{ page.date | date: "%B %d, %Y" }}
+                    {% if page.author %}
+                        by {{ page.author }}
+                    {% elsif site.author %}
+                        by {{ site.author }}
+                    {% endif %}
+                </div>
+                {% if page.tags.size > 0 %}
+                <div class="mb-3">
+                    {% for tag in page.tags %}
+                        <span class="badge bg-primary me-1">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </header>
+            
+            <!-- Post Content-->
+            <article class="mb-4">
+                {{ content }}
+            </article>
+            
+            <!-- Post Footer-->
+            <div class="card shadow border-0 rounded-4 mb-5">
+                <div class="card-body p-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {% if page.previous %}
+                            <p class="text-muted mb-1"><small>Previous Post</small></p>
+                            <a href="{{ page.previous.url | relative_url }}">{{ page.previous.title }}</a>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            {% if page.next %}
+                            <p class="text-muted mb-1"><small>Next Post</small></p>
+                            <a href="{{ page.next.url | relative_url }}">{{ page.next.title }}</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Back to Blog-->
+            <div class="text-center mb-5">
+                <a class="btn btn-primary" href="{{ '/blog/' | relative_url }}">← Back to Blog</a>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
