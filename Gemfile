@@ -3,6 +3,7 @@
 source "https://rubygems.org"
 
 gem "jekyll", "~> 4.4"
+gem "jekyll-sass-converter", "3.1.0"
 gem "jekyll-seo-tag"
 gem "jekyll-feed"
 gem "jekyll-remote-theme"
